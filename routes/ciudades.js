@@ -1,9 +1,9 @@
 "use strict";
 
-var express = require('express');
-var router = express.Router();
-var response = require('../utils/response');
-var models = require('../models');
+let express = require('express');
+let router = express.Router();
+let response = require('../utils/response');
+let models = require('../models');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
