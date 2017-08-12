@@ -1,11 +1,15 @@
-"use strict";
+'use strict';
+/**
+ * @author David Moreno <demoreno@gmail.com>
+ * @type {*|createApplication}
+ */
 
-var express = require('express');
-var router = express.Router();
-var estados = require('../controllers/estadosController');
+let express = require('express');
+let router = express.Router();
+let estadosController = require('../controllers/estadosController');
 
 router.get('/', function(req, res, next) {
-        estados.find(req,res,next);
+        estadosController.find(req,res,next);
 });
 
 module.exports = router;

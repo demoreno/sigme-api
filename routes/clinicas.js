@@ -1,34 +1,15 @@
-"use strict";
+'use strict';
+/**
+ * @author David Moreno <demoreno@gmail.com>
+ * @type {*|createApplication}
+ */
 
-var express = require('express');
-var router = express.Router();
-var response = require('../utils/response');
-var models = require('../models');
-
+let express = require('express');
+let router = express.Router();
+let clinicasController = require('../controllers/ciudadesController');
 
 router.get('/', function(req, res, next) {
-
-    models.centros.findAll({
-        include : [
-            {
-                model : models.ciudades,
-                as : 'ciudad',
-                include : [
-                    {
-                        model : models.estados,
-                        as : 'estado'
-                    }
-                ]
-            }
-        ]
-    }).then((instance) =>{
-        let data = instance;
-        response.send(res,202,data,null);
-    }).catch((err) => {
-        console.log(err);
-        response.send(res,500,null,err);
-    });
-
+    clinicasController.find(req,res,next);
 });
 
 module.exports = router;

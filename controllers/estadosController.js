@@ -1,14 +1,27 @@
 "use strict";
 
-var response = require('../utils/response');
-var models = require('../models/');
+/**
+ * @class EstadosController
+ * @author David Moreno <demoreno@gmail.com>
+ * @date 12/08/2017
+ * @copyright David Moreno
+ */
+
+let response = require('../utils/response');
+let models = require('../models/');
 
 class EstadosController {
 
     constructor(){
 
     }
-
+    /**
+     * Metodo utilizado por HTTP GET (GET_ALL)
+     * @method find
+     * @param req
+     * @param res
+     * @param next
+     */
     find(req,res,next){
 
         models.estados.findAll({
@@ -23,8 +36,6 @@ class EstadosController {
         }).catch((err) => {
             response.send(res,500,null,err);
         });
-
-
     }
 }
 

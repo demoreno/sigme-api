@@ -1,10 +1,10 @@
 "use strict";
 
-var fs        = require("fs");
-var path      = require("path");
-var Sequelize = require("sequelize");
-var config = require('../config/config');
-var sequelize = new Sequelize(config.databaseName, config.username, config.password , {
+let fs        = require("fs");
+let path      = require("path");
+let Sequelize = require("sequelize");
+let config = require('../config/config');
+let sequelize = new Sequelize(config.databaseConfig.databaseName, config.databaseConfig.username, config.databaseConfig.password , {
     host: 'localhost',
     dialect: 'postgres',
     pool: {
@@ -12,12 +12,13 @@ var sequelize = new Sequelize(config.databaseName, config.username, config.passw
         min: 0,
         idle: 10000
     },
+    logging: config.databaseConfig.logSequelize,
     define: {
         timestamps: false // true by default
     }
 
 });
-var db        = {};
+let db        = {};
 
 fs
     .readdirSync(__dirname)
@@ -25,7 +26,7 @@ fs
         return (file.indexOf(".") !== 0) && (file !== "index.js");
     })
     .forEach(function(file) {
-        var model = sequelize.import(path.join(__dirname, file));
+        let model = sequelize.import(path.join(__dirname, file));
         db[model.name] = model;
     });
 

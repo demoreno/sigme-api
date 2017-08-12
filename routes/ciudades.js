@@ -2,26 +2,10 @@
 
 let express = require('express');
 let router = express.Router();
-let response = require('../utils/response');
-let models = require('../models');
+let ciudadesController = require('../controllers/ciudadesController');
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
-
-    ciudades.findAll({
-        include : [
-            {
-                model : estados
-            }
-        ]
-    }).then((instance) =>{
-        let data = instance;
-        response.send(res,202,data,null);
-    }).catch((err) => {
-        console.log(err);
-        response.send(res,500,null,err);
-    });
-
+     ciudadesController.find(req,res,next);
 });
 
 module.exports = router;

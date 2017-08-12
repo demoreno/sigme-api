@@ -8,53 +8,59 @@
  */
 module.exports = (sequelize,DataTypes) => {
 
-    let centros = sequelize.define('centros', {
-            id_clinica : {
+    let usuarios = sequelize.define('usuarios', {
+            id : {
                 type : DataTypes.INTEGER,
                 field : 'id',
                 autoIncrement : true,
                 primaryKey : true,
                 allowNull : false
             },
-            razon : {
+            identificacion : {
                 type : DataTypes.STRING,
-                field : 'razon'
-            },
-            rif : {
-                type : DataTypes.STRING,
-                field : 'rif'
+                field : 'identificacion'
             },
             nombre : {
                 type : DataTypes.STRING,
-                field : 'razon'
+                field : 'p_nombre'
             },
-            telefonos : {
+            apellido : {
                 type : DataTypes.STRING,
-                field : 'telefonos'
+                field : 'p_apellido'
+            },
+            genero : {
+                type : DataTypes.STRING,
+                field : 'sexo'
+            },
+            fecha_nacimiento : {
+                type : DataTypes.DATE,
+                field : 'fecha_nacimiento'
             },
             email : {
                 type : DataTypes.STRING,
                 field : 'email'
             },
-            direccion : {
+            user : {
                 type : DataTypes.STRING,
-                field : 'direccion'
+                field : 'username'
             },
-            id_ciudad : {
+            pass : {
+                type : DataTypes.STRING,
+                field : 'pass'
+            },
+            id_rol : {
                 type : DataTypes.INTEGER,
-                field : 'idciudad'
+                field : 'id_rol'
             }
         },
         {
             classMethods : {
                 associate : (models) => {
-                    centros.belongsTo(models.ciudades , { foreignKey:  'id_ciudad' , as : 'ciudad'});
+                    usuarios.belongsTo(models.roles , {foreignKey: 'id_rol'});
                 }
             }
         }
     );
 
-    return centros;
+    return usuarios;
 };
-
-

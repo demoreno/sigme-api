@@ -1,5 +1,11 @@
 "use strict";
 
+/**
+ * @author David Moreno <demoreno@gmail.com>
+ * @param sequelize
+ * @param DataTypes
+ * @returns {Model|*}
+ */
 module.exports = (sequelize,DataTypes) => {
     
     let estados = sequelize.define('estados', {
@@ -18,7 +24,8 @@ module.exports = (sequelize,DataTypes) => {
         {
             classMethods : {
                 associate : (models) => {
-                    estados.hasMany(models.ciudades,{foreignKey : 'id_ciudades' });
+                    //estados.hasMany(models.ciudades,{foreignKey : 'id_ciudades' });
+                    estados.hasMany(models.ciudades,{foreignKey : 'id_estado' });
                 }
             }
         }

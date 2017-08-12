@@ -8,32 +8,27 @@
  */
 module.exports = (sequelize,DataTypes) => {
 
-    let ciudades = sequelize.define('ciudades', {
-            id_ciudades : {
+    let roles = sequelize.define('roles', {
+            id : {
                 type : DataTypes.INTEGER,
-                field : 'id',
+                field : 'id_rol',
                 autoIncrement : true,
                 primaryKey : true,
                 allowNull : false
             },
-            id_estado : {
-                type : DataTypes.INTEGER,
-                field : 'idestado'
-            },
-            nombre : {
+            descripcion : {
                 type : DataTypes.STRING,
-                field : 'nombre'
+                field : 'descripcion'
             }
         },
         {
             classMethods : {
                 associate : (models) => {
-                    ciudades.belongsTo(models.estados , { foreignKey:  'id_estado' , as : 'estados'});
-                    ciudades.hasMany(models.centros,{foreignKey : 'id_ciudad', as : 'clinicas'});
+                    roles.hasMany(models.usuarios , { foreignKey:  'id_rol' , as : 'rol'});
                 }
             }
         }
     );
 
-    return ciudades;
+    return roles;
 };
