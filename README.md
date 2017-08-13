@@ -34,7 +34,7 @@ Explain how to run the automated tests for this system
  
 ## Author
 
-* **David Moreno** - *Initial work* 
+* **David Moreno**
 
 ## License
 
