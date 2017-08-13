@@ -27,29 +27,22 @@ class MedicosController {
         models.medicos.findAll({
             include : [
                   {
-                    model : models.datos_personales, 
-                    as : 'datos_personales',
-                    include : [
-                        {
-                            model : models.cuenta_usuarios,
-                            as : 'cuenta_usuario'
-                        }
-                    ]
+                    model : models.datos_personales
                 },
                 {
-                    model : models.especialidades,                    
+                    model : models.especialidades,
                     through : {
                         attributes : [],
                         model : models.medicos_especialidades
                     }
                 },
-                {
+                /*{
                     model : models.centros,                    
                     through : {
                         attributes : [],
                         model : models.medicos_clinicas
                     }
-                }
+                }*/
             ]
         }).then((instance) =>{
             response.send(res,202,instance,null);

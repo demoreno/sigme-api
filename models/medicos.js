@@ -16,16 +16,16 @@ module.exports = (sequelize,DataTypes) => {
                 primaryKey : true,
                 allowNull : false
             },
-            id_usuario : {
+            id_datos_personales : {
                 type : DataTypes.INTEGER,
-                field : 'idusuario'
+                field : 'id_datos_personales'
             }
         },
         {
             classMethods : {
                 associate : (models) => {                    
-                    //medicos.belongsTo(models.datos_personales,{foreignKey : 'id_usuario', as : 'datos_personales' });
-                    medicos.belongsToMany(models.especialidades , {through : 'medicos_especialidades', foreignKey : 'id_medico'});                    
+                    medicos.belongsTo(models.datos_personales,{foreignKey : 'id_datos_personales' });
+                    medicos.belongsToMany(models.especialidades , {through : 'medicos_especialidades', foreignKey : 'id_medico'});
                     medicos.belongsToMany(models.centros , {through : 'medicos_clinicas', foreignKey : 'id_medico'});                    
                     medicos.hasMany(models.citas , { foreignKey:  'id_cita' , as : 'medico'});
                 }

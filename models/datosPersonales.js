@@ -48,8 +48,8 @@ module.exports = (sequelize,DataTypes) => {
         {
             classMethods : {
                 associate : (models) => {
-                    datosPersonales.hasOne(models.cuenta_usuarios , { foreignKey:  'id_datos_personales' , as : 'cuenta_usuario'});
-                    datosPersonales.hasOne(models.medicos , { foreignKey:  'id' , as : 'datos_personales'});
+                    datosPersonales.hasMany(models.usuarios , { foreignKey:  'id_datos_personales'});
+                    datosPersonales.hasOne(models.medicos , { foreignKey:  'id_datos_personales'});
                     datosPersonales.hasMany(models.citas , { foreignKey:  'id' , as : 'datos_personales'});
                 }
             }

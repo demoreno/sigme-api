@@ -24,7 +24,13 @@ class UsuariosController {
      */
     find(req,res,next){
         
-       models.usuarios.findAll().then((instance) =>{
+       models.usuarios.findAll({
+           include : [
+               {
+                   model : models.roles
+               }
+           ]
+       }).then((instance) =>{
             response.send(res,202,instance,null);
         }).catch((err) => {
             console.log(err);
