@@ -21,10 +21,10 @@ fs
     .forEach(function(file) {
         let route =  path.basename(file,".js");
 
-        describe('Testing Status HTTP Request /'+route , () =>{
+        describe('Testing Status HTTP Request /'+route , () => {
 
-            it('/get' , (done) =>{
-                chai.request(app).get('/'+route).end((err,res) => {
+            it('/get', (done) => {
+                chai.request(app).get('/' + route).end((err, res) => {
                     let dataResponse = JSON.parse(res.text);
                     expect(res).to.have.status(200);
                     expect(dataResponse).to.have.property('data');

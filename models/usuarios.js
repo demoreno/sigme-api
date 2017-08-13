@@ -16,30 +16,6 @@ module.exports = (sequelize,DataTypes) => {
                 primaryKey : true,
                 allowNull : false
             },
-            identificacion : {
-                type : DataTypes.STRING,
-                field : 'identificacion'
-            },
-            nombre : {
-                type : DataTypes.STRING,
-                field : 'p_nombre'
-            },
-            apellido : {
-                type : DataTypes.STRING,
-                field : 'p_apellido'
-            },
-            genero : {
-                type : DataTypes.STRING,
-                field : 'sexo'
-            },
-            fecha_nacimiento : {
-                type : DataTypes.DATE,
-                field : 'fecha_nacimiento'
-            },
-            email : {
-                type : DataTypes.STRING,
-                field : 'email'
-            },
             user : {
                 type : DataTypes.STRING,
                 field : 'username'
@@ -50,13 +26,18 @@ module.exports = (sequelize,DataTypes) => {
             },
             id_rol : {
                 type : DataTypes.INTEGER,
-                field : 'id_rol'
+                field : 'idrol'
+            },
+            id_datos_personales : {
+                type: DataTypes.INTEGER,
+                field : 'id_datos_personales'
             }
         },
         {
             classMethods : {
                 associate : (models) => {
-                    usuarios.belongsTo(models.roles , {foreignKey: 'id_rol'});
+                    usuarios.belongsTo(models.datos_personales , {foreignKey: 'id_datos_personales'});
+                    usuarios.hasOne(models.roles , {foreignKey: 'id'});
                 }
             }
         }

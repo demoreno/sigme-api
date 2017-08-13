@@ -8,20 +8,21 @@ let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 let app = express();
 let http = require('http');
-
 let config = require('./config/config');
+let portApp = config.ApiPort || 8080;
 
-http.createServer(app).listen(3000, function(){
 
-    let routes = require('./routes')(app);
-   
+http.createServer(app).listen(portApp, function(){
+
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cookieParser());
     app.use(express.static(path.join(__dirname, 'public')));
 
-    console.log('Express server listening on port ' + config.ApiPort);
+    require('./routes')(app);
+
+    console.log('Express server listening on port ' + portApp);
 });
 
 module.exports = app;

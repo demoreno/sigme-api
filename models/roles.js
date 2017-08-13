@@ -11,7 +11,7 @@ module.exports = (sequelize,DataTypes) => {
     let roles = sequelize.define('roles', {
             id : {
                 type : DataTypes.INTEGER,
-                field : 'id_rol',
+                field : 'id',
                 autoIncrement : true,
                 primaryKey : true,
                 allowNull : false
@@ -24,7 +24,7 @@ module.exports = (sequelize,DataTypes) => {
         {
             classMethods : {
                 associate : (models) => {
-                    roles.hasMany(models.usuarios , { foreignKey:  'id_rol' , as : 'rol'});
+                    roles.hasMany(models.usuarios , { foreignKey:  'id' });
                 }
             }
         }
