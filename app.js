@@ -1,5 +1,9 @@
 "use strict";
 
+/**
+ * @author David Moreno <demoreno@gmail.com>
+ */
+
 let express = require('express');
 let path = require('path');
 let favicon = require('serve-favicon');

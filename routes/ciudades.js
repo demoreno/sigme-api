@@ -1,5 +1,10 @@
 "use strict";
 
+/**
+ * @author David Moreno <demoreno@gmail.com>
+ * @type {*|createApplication}
+ */
+
 let express = require('express');
 let router = express.Router();
 let ciudadesController = require('../controllers/ciudadesController');
