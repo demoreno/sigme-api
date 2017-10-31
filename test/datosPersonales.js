@@ -31,7 +31,7 @@ describe('Test Data /datos_personales ' , () =>{
             "apellido": "Moreno",
             "telefono": "04141383491",
             "correo": "demoreno@gmail.com",
-            "fecha_nacimiento": "1991-09-09",
+            "fecha_nacimiento": "1991-09-01",
             "identificacion": "19736656",
             "genero": "M"
         };
